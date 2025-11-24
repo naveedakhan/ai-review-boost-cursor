@@ -6,6 +6,11 @@ async function handleSignIn(formData: FormData) {
   await signInAction(formData);
 }
 
+async function handleGoogleSignIn() {
+  "use server";
+  await googleSignInAction();
+}
+
 export default function LoginPage() {
   return (
     <div className="mx-auto flex min-h-screen max-w-5xl items-center justify-center px-6">
@@ -62,7 +67,7 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-4">
-            <form action={googleSignInAction}>
+            <form action={handleGoogleSignIn}>
               <button
                 type="submit"
                 className="w-full rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:border-brand-500 hover:text-brand-700"
