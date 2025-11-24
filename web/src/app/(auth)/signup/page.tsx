@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { signUpAction, googleSignInAction } from "@/lib/auth";
 
+async function handleSignUp(formData: FormData) {
+  "use server";
+  await signUpAction(formData);
+}
+
 export default function SignupPage() {
   return (
     <div className="mx-auto flex min-h-screen max-w-5xl items-center justify-center px-6">
@@ -21,7 +26,7 @@ export default function SignupPage() {
         </div>
 
         <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
-          <form action={signUpAction} className="space-y-4">
+          <form action={handleSignUp} className="space-y-4">
             <div>
               <label className="text-sm font-medium text-slate-800" htmlFor="email">
                 Work email
