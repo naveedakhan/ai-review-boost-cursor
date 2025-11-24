@@ -70,7 +70,10 @@ export async function googleSignInAction() {
     },
   });
 
-  if (error) return { error: error.message };
+  if (error) {
+    // Surface as a thrown error so the action signature remains void.
+    throw new Error(error.message);
+  }
 }
 
 export async function resetPasswordAction(formData: FormData) {
