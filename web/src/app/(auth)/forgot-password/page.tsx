@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { resetPasswordAction } from "@/lib/auth";
 
+async function handleReset(formData: FormData) {
+  "use server";
+  await resetPasswordAction(formData);
+}
+
 export default function ForgotPasswordPage() {
   return (
     <div className="mx-auto flex min-h-screen max-w-3xl items-center justify-center px-6">
@@ -14,7 +19,7 @@ export default function ForgotPasswordPage() {
             Enter the email you use for HS Review Booster. You&apos;ll receive a reset link.
           </p>
         </div>
-        <form action={resetPasswordAction} className="space-y-4">
+        <form action={handleReset} className="space-y-4">
           <div>
             <label className="text-sm font-medium text-slate-800" htmlFor="email">
               Email
